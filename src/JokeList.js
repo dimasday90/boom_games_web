@@ -16,6 +16,12 @@ export default class Joke extends React.Component {
                         </header>
                         {this.props.jokes.map(joke => (
                             <Card className="joke-card" variant="outlined">
+                                <Typography
+                                    variant="body2"
+                                    component="p"
+                                >
+                                    joke category: {joke.data.category}
+                                </Typography>
                                 <CardContent>
                                     <Typography
                                         variant="h5"
