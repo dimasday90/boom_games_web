@@ -1,35 +1,14 @@
-header {
+#games-container {
   display: flex;
-  justify-content: center;
-  align-self: center;
+  flex-wrap: wrap;
+  margin: 10px 15px;
 }
 
-#joke-form {
-  width: 70%;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.card .card-image {
+  height: 200px;
 }
 
-#joke-form .input-field, #joke-form .submit-btn {
-  margin: 8px 0px;
-}
-
-.joke-card {
-  width: 80%;
-  margin: 14px auto;
-}
-
-.buttonProgress {
-  position: 'absolute';
-  top: 50%;
-  left: 50%;
-  margin-top: -12;
-  margin-left: -12;
-}
-
-.wrapper {
-  margin: spacing(1);
-  position: relative;
+.chip {
+  margin-left: 6px;
+  margin-bottom: 5px;
 }
