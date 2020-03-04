@@ -17,8 +17,8 @@ import {
   Link
 } from 'react-router-dom'
 
-
 export default function GameItems(props) {
+
   return (
     <div id="games-container">
       <Grid container wrap="wrap" spacing={3}>

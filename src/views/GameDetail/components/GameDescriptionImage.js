@@ -67,6 +67,9 @@ export default function GameDescriptionImage (props) {
                                 {props.game.description_raw}
                             </Box>
                         </Typography>
+                        <Typography color="textSecondary">
+                            Developers:
+                        </Typography>
                         <Grid item>
                             {props.game.developers && props.game.developers.map(developer => (
                             <Chip
@@ -77,6 +80,9 @@ export default function GameDescriptionImage (props) {
                             />
                             ))}
                         </Grid>
+                        <Typography color="textSecondary">
+                            Genres:
+                        </Typography>
                         <Grid item>
                             {props.game.genres && props.game.genres.map(genre => (
                             <Chip
@@ -87,6 +93,9 @@ export default function GameDescriptionImage (props) {
                             />
                             ))}
                         </Grid>
+                        <Typography color="textSecondary">
+                            Platforms:
+                        </Typography>
                         <Grid item>
                             {props.game.platforms && props.game.platforms.map(({platform}) => (
                             <Chip
@@ -97,6 +106,9 @@ export default function GameDescriptionImage (props) {
                             />
                             ))}
                         </Grid>
+                        <Typography color="textSecondary">
+                            Stores:
+                        </Typography>
                         <Grid item>
                             {props.game.stores && props.game.stores.map(({id, store}) => (
                             <Chip
