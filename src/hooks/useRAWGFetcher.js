@@ -18,10 +18,14 @@ export default function useRAWGFetcher(url) {
       }
     })
       .then(({ data }) => {
-        setData(data.results);
+        if (data.results) {
+          setData(data.results);
+        } else {
+          setData(data)
+        }
       })
       .catch(err => {
-        setError(err.response);
+        setError(err);
       })
       .finally(() => {
         setLoading(false);

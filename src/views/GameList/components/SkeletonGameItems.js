@@ -1,8 +1,12 @@
 import React from "react";
-import Skeleton from "@material-ui/lab/Skeleton";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import {
+  Skeleton 
+}from "@material-ui/lab";
+import {
+  Grid,
+  Card,
+  CardContent
+} from '@material-ui/core'
 
 export default function SkeletonGameItems() {
   return (

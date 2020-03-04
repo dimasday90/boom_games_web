@@ -1,14 +1,22 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import DetailsIcon from "@material-ui/icons/Details";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Chip from "@material-ui/core/Chip";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Chip,
+  Grid,
+  Typography
+} from '@material-ui/core'
+import {
+  InfoOutlined as InfoOutlinedIcon,
+  FavoriteBorderOutlined as FavoriteBorderOutlinedIcon
+} from '@material-ui/icons'
+import {
+  Link
+} from 'react-router-dom'
+
 
 export default function GameItems(props) {
   return (
@@ -49,14 +57,16 @@ export default function GameItems(props) {
                   alignItems="center"
                 >
                   <Grid item>
-                    <Button color="extended">
-                      <DetailsIcon />
-                      Details
-                    </Button>
+                    <Link to={`/games/${game.id}`}>
+                      <Button color="extended">
+                        <InfoOutlinedIcon />
+                        Details
+                      </Button>
+                    </Link>
                   </Grid>
                   <Grid item>
                     <Button color="extended">
-                      <FavoriteIcon />
+                      <FavoriteBorderOutlinedIcon />
                       Add as Favorite
                     </Button>
                   </Grid>

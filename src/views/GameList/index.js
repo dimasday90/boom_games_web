@@ -8,6 +8,10 @@ export default function Games() {
   const { loading, data: games } = useRAWGFetcher(
     "https://rawg-video-games-database.p.rapidapi.com/games"
   );
-  if (loading) return <SkeletonGameItems />;
-  return <GameItems games={games} />;
+  return (
+    <>
+      {loading && <SkeletonGameItems />}
+      <GameItems games={ games } />
+    </>
+  )
 }

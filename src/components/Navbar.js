@@ -1,16 +1,27 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
+import {
+  fade, 
+  makeStyles 
+} from "@material-ui/core/styles";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Menu,
+  MenuItem
+} from '@material-ui/core'
+import {
+  Search as SearchIcon,
+  AccountCircle,
+  MoreVert as MoreIcon,
+  Games as GamesIcon,
+  Favorite as FavoriteIcon
+} from '@material-ui/icons'
+import {
+  Link
+} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -127,6 +138,30 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <Link className="link-navbar" to="/">
+        <MenuItem>
+          <IconButton
+            aria-label="game list"
+            aria-controls="primary-games-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <GamesIcon />
+          </IconButton>
+          <p>Games</p>
+        </MenuItem>
+      </Link>
+      <MenuItem>
+        <IconButton
+          aria-label="favorite list"
+          aria-controls="primary-favorite-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <FavoriteIcon />
+        </IconButton>
+        <p>Favorite</p>
+      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -145,14 +180,6 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             BoomGames React
           </Typography>
@@ -171,6 +198,29 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <Link
+              className="link-navbar"
+              to="/"
+            >
+              <IconButton
+                edge="end"
+                aria-label="games page"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <GamesIcon />
+              </IconButton>
+            </Link>
+            <IconButton
+              edge="end"
+              aria-label="games page"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <FavoriteIcon />
+            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"

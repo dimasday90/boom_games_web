@@ -1,4 +1,4 @@
-#games-container {
+#games-container, #game-detail-container {
   display: flex;
   flex-wrap: wrap;
   margin: 10px 15px;
@@ -11,4 +11,14 @@
 .chip {
   margin-left: 6px;
   margin-bottom: 5px;
+}
+
+.link-navbar {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.4s;
+}
+
+.link-navbar:hover {
+  color: rgb(255, 8, 8);
 }
