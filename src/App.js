@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import GameList from "./views/GameList";
 import GameDetail from "./views/GameDetail"
 import "./App.css";
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 import {
   BrowserRouter as Router,
@@ -17,17 +19,19 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <GameList />
-          </Route>
-          <Route exact path="/games/:id">
-            <GameDetail />
-          </Route>
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <GameList />
+            </Route>
+            <Route exact path="/games/:id">
+              <GameDetail />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }

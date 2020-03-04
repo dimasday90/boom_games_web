@@ -7,7 +7,7 @@ const initialState = {
 export default function handleFavorites (state = initialState, action) {
     switch(action.type) {
         case ADD_FAVORITE:
-            return { ...state, favorites: state.favorites.push(action.payload) }
+            return { ...state, favorites: state.favorites.concat([action.payload]) }
         default:
             return state
     }

@@ -1,6 +1,11 @@
 import React from "react";
 import useRAWGFetcher from "../../hooks/useRAWGFetcher";
 
+import {
+  Typography,
+  Box
+} from '@material-ui/core'
+
 import SkeletonGameItems from "./components/SkeletonGameItems";
 import GameItems from "./components/GameItems";
 
@@ -10,6 +15,16 @@ export default function Games() {
   );
   return (
     <>
+      <Typography component="div">
+        <Box
+          textAlign="center"
+          m={1}
+          fontWeight="fontWeightBold"
+          fontSize="h2.fontSize"
+        >
+          Highlighted Game List
+        </Box>
+      </Typography>
       {loading && <SkeletonGameItems />}
       <GameItems games={ games } />
     </>

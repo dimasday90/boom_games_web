@@ -16,8 +16,19 @@ import {
 import {
   Link
 } from 'react-router-dom'
+import {
+  useDispatch
+} from 'react-redux'
 
 export default function GameItems(props) {
+  const dispatch = useDispatch()
+  
+  function addFavorite (payload) {
+    dispatch({
+      type: 'ADD_FAVORITE',
+      payload
+    })
+  }
 
   return (
     <div id="games-container">
@@ -58,14 +69,14 @@ export default function GameItems(props) {
                 >
                   <Grid item>
                     <Link to={`/games/${game.id}`}>
-                      <Button color="extended">
+                      <Button>
                         <InfoOutlinedIcon />
                         Details
                       </Button>
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button color="extended">
+                    <Button onClick={() => addFavorite(game)}>
                       <FavoriteBorderOutlinedIcon />
                       Add as Favorite
                     </Button>
