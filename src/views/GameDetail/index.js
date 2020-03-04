@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core'
 
 import GameDescriptionImage from './components/GameDescriptionImage'
+import GameRatingTags from './components/GameRatingTags'
 
 export default function GameDetail () {
     const { id } = useParams()
@@ -26,6 +27,11 @@ export default function GameDetail () {
                     item
                 >
                     <GameDescriptionImage game={game} />
+                </Grid>
+                <Grid
+                    item
+                >
+                    <GameRatingTags game={game} />
                 </Grid>
             </Grid>
         </div>

@@ -10,7 +10,8 @@ import {
   Typography,
   InputBase,
   Menu,
-  MenuItem
+  MenuItem,
+  Tooltip
 } from '@material-ui/core'
 import {
   Search as SearchIcon,
@@ -200,34 +201,38 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link
-              className="link-navbar"
-              to="/"
-            >
-              <IconButton
-                edge="end"
-                aria-label="games page"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
+            <Tooltip title="Games">
+              <Link
+                className="link-navbar"
+                to="/"
               >
-                <GamesIcon />
-              </IconButton>
-            </Link>
-            <Link
-              className="link-navbar"
-              to="/favorites"
-            >
-              <IconButton
-                edge="end"
-                aria-label="games page"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
+                <IconButton
+                  edge="end"
+                  aria-label="games page"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <GamesIcon />
+                </IconButton>
+              </Link>
+            </Tooltip>
+            <Tooltip title="Favorites">
+              <Link
+                className="link-navbar"
+                to="/favorites"
               >
-                <FavoriteIcon />
-              </IconButton>
-            </Link>
+                <IconButton
+                  edge="end"
+                  aria-label="games page"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              </Link>
+            </Tooltip>
             <IconButton
               edge="end"
               aria-label="account of current user"
