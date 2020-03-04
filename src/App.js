@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import GameList from "./views/GameList";
 import GameDetail from "./views/GameDetail"
+import Favorites from "./views/Favorites"
 import "./App.css";
 import { Provider } from 'react-redux'
 import store from './store/store'
@@ -28,6 +29,9 @@ export default class App extends React.Component {
             </Route>
             <Route exact path="/games/:id">
               <GameDetail />
+            </Route>
+            <Route exact path="/favorites">
+              <Favorites />
             </Route>
           </Switch>
         </Router>

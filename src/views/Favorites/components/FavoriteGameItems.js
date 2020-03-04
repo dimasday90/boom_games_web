@@ -11,26 +11,13 @@ import {
 } from '@material-ui/core'
 import {
   InfoOutlined as InfoOutlinedIcon,
-  FavoriteBorderOutlined as FavoriteBorderOutlinedIcon
+  DeleteOutlined as DeleteOutlinedIcon
 } from '@material-ui/icons'
 import {
   Link
 } from 'react-router-dom'
-import {
-  useSelector,
-  useDispatch
-} from 'react-redux'
 
-export default function GameItems(props) {
-  const dispatch = useDispatch()
-  const favorites = useSelector(state => state.favorites)
-  
-  function addFavorite (payload) {
-    dispatch({
-      type: 'ADD_FAVORITE',
-      payload
-    })
-  }
+export default function FavoriteGameItems(props) {
 
   return (
     <div id="games-container">
@@ -78,9 +65,9 @@ export default function GameItems(props) {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button disabled={favorites.find(item => item.name === game.name) ? true : false} onClick={() => addFavorite(game)}>
-                      <FavoriteBorderOutlinedIcon />
-                      {favorites.find(item => item.name === game.name) ? 'My Favorite' : 'Add as Favorite'}
+                    <Button>
+                      <DeleteOutlinedIcon />
+                      Remove from Favorite
                     </Button>
                   </Grid>
                 </Grid>

@@ -151,17 +151,19 @@ export default function PrimarySearchAppBar() {
           <p>Games</p>
         </MenuItem>
       </Link>
-      <MenuItem>
-        <IconButton
-          aria-label="favorite list"
-          aria-controls="primary-favorite-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <FavoriteIcon />
-        </IconButton>
-        <p>Favorite</p>
-      </MenuItem>
+      <Link className="link-navbar" to="/favorites">
+        <MenuItem>
+          <IconButton
+            aria-label="favorite list"
+            aria-controls="primary-favorite-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <FavoriteIcon />
+          </IconButton>
+          <p>Favorite</p>
+        </MenuItem>
+      </Link>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -212,15 +214,20 @@ export default function PrimarySearchAppBar() {
                 <GamesIcon />
               </IconButton>
             </Link>
-            <IconButton
-              edge="end"
-              aria-label="games page"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
+            <Link
+              className="link-navbar"
+              to="/favorites"
             >
-              <FavoriteIcon />
-            </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="games page"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <FavoriteIcon />
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"

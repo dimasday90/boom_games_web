@@ -2,17 +2,23 @@ import React from "react";
 import useRAWGFetcher from "../../hooks/useRAWGFetcher";
 
 import {
+    useSelector
+} from 'react-redux'
+
+import {
   Typography,
   Box
 } from '@material-ui/core'
 
 import SkeletonGameItems from "../../components/SkeletonGameItems";
-import GameItems from "./components/GameItems";
+import NoFavoriteGameItems from "./components/NoFavoriteGameItems"
+import FavoriteGameList from "./components/FavoriteGameItems"
 
 export default function Games() {
-  const { loading, data: games } = useRAWGFetcher(
+  const { loading } = useRAWGFetcher(
     "https://rawg-video-games-database.p.rapidapi.com/games"
   );
+  const favorites = useSelector(state => state.favorites)
   return (
     <>
       <Typography component="div">
@@ -22,11 +28,12 @@ export default function Games() {
           fontWeight="fontWeightBold"
           fontSize="h2.fontSize"
         >
-          Highlighted Game List
+          Favorite Game List
         </Box>
       </Typography>
       {loading && <SkeletonGameItems />}
-      <GameItems games={ games } />
+      {favorites.length === 0 && <NoFavoriteGameItems />}
+      {favorites.length && <FavoriteGameList games={favorites} />}
     </>
   )
 }
