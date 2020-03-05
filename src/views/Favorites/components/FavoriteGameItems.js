@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardActions,
@@ -16,15 +16,20 @@ import {
 import {
   Link
 } from 'react-router-dom'
+import ThemeContext from '../../../context/ThemeContext'
 
 export default function FavoriteGameItems(props) {
-
+  const theme = useContext(ThemeContext)
   return (
     <div id="games-container">
       <Grid container wrap="wrap" spacing={3}>
         {props.games.map(game => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={game.id}>
-            <Card className="card">
+            <Card className="card"
+              style={theme.phantom ? {backgroundColor: "grey", color: 'white'}
+              : {}
+              }
+            >
               <CardContent>
                 <CardMedia
                   className="card-image"
@@ -43,7 +48,7 @@ export default function FavoriteGameItems(props) {
                         className="chip"
                         key={genre.id}
                         label={genre.name}
-                        color="primary"
+                        color={theme.phantom ? "secondary" : "primary"}
                       />
                     ))}
                   </Grid>
@@ -58,14 +63,22 @@ export default function FavoriteGameItems(props) {
                 >
                   <Grid item>
                     <Link to={`/games/${game.id}`} style={{textDecoration: "none"}}>
-                      <Button>
+                      <Button
+                        style={theme.phantom ? {color: 'white'}
+                        : {}
+                        }
+                      >
                         <InfoOutlinedIcon />
                         Details
                       </Button>
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button>
+                    <Button
+                      style={theme.phantom ? {color: 'white'}
+                      : {}
+                      }
+                    >
                       <DeleteOutlinedIcon />
                       Remove from Favorite
                     </Button>
