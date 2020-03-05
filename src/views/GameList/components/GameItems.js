@@ -21,15 +21,14 @@ import {
   useDispatch
 } from 'react-redux'
 
+import { addFavorite } from '../../../store/actionCreators/favoriteActions'
+
 export default function GameItems(props) {
   const dispatch = useDispatch()
-  const favorites = useSelector(state => state.favorites)
+  const favorites = useSelector(state => state.favoriteReducer.favorites)
   
-  function addFavorite (payload) {
-    dispatch({
-      type: 'ADD_FAVORITE',
-      payload
-    })
+  function addFavoriteClick (payload) {
+    dispatch(addFavorite(payload))
   }
 
   return (
@@ -78,7 +77,7 @@ export default function GameItems(props) {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button disabled={favorites.find(item => item.name === game.name) ? true : false} onClick={() => addFavorite(game)}>
+                    <Button disabled={favorites.find(item => item.name === game.name) ? true : false} onClick={() => addFavoriteClick(game)}>
                       <FavoriteBorderOutlinedIcon />
                       {favorites.find(item => item.name === game.name) ? 'My Favorite' : 'Add as Favorite'}
                     </Button>

@@ -5,7 +5,7 @@ import GameDetail from "./views/GameDetail"
 import Favorites from "./views/Favorites"
 import "./App.css";
 import { Provider } from 'react-redux'
-import store from './store/store'
+import store from './store'
 
 import {
   BrowserRouter as Router,

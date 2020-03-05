@@ -12,7 +12,7 @@ import NoFavoriteGameItems from "./components/NoFavoriteGameItems"
 import FavoriteGameList from "./components/FavoriteGameItems"
 
 export default function Games() {
-  const favorites = useSelector(state => state.favorites)
+  const favorites = useSelector(state => state.favoriteReducer.favorites)
   return (
     <>
       <Typography component="div">
