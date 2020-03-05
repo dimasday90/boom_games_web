@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Skeleton 
 }from "@material-ui/lab";
@@ -7,14 +7,20 @@ import {
   Card,
   CardContent
 } from '@material-ui/core'
+import ThemeContext from '../context/ThemeContext'
 
 export default function SkeletonGameItems() {
+  const theme = useContext(ThemeContext)
   return (
     <div id="games-container">
       <Grid container wrap="wrap" spacing={3}>
         {Array.from(new Array(4)).map((item, i) => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={i}>
-            <Card className="card">
+            <Card className="card"
+              style={theme.phantom ? {backgroundColor: 'grey'}
+              : {}
+              }
+            >
               <Skeleton animation="wave" variant="rect" height={200} />
               <CardContent>
                 <Skeleton

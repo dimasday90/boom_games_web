@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardActions,
@@ -22,10 +22,12 @@ import {
 } from 'react-redux'
 
 import { addFavorite } from '../../../store/actionCreators/favoriteActions'
+import ThemeContext from '../../../context/ThemeContext'
 
 export default function GameItems(props) {
   const dispatch = useDispatch()
   const favorites = useSelector(state => state.favoriteReducer.favorites)
+  const theme = useContext(ThemeContext)
   
   function addFavoriteClick (payload) {
     dispatch(addFavorite(payload))
@@ -36,7 +38,11 @@ export default function GameItems(props) {
       <Grid container wrap="wrap" spacing={3}>
         {props.games.map(game => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={game.id}>
-            <Card className="card">
+            <Card className="card" 
+              style={theme.phantom ? {backgroundColor: "grey", color: 'white'}
+              : {}
+              }
+            >
               <CardContent>
                 <CardMedia
                   className="card-image"
@@ -55,7 +61,7 @@ export default function GameItems(props) {
                         className="chip"
                         key={genre.id}
                         label={genre.name}
-                        color="primary"
+                        color={theme.phantom ? "secondary" : "primary"}
                       />
                     ))}
                   </Grid>
@@ -69,15 +75,28 @@ export default function GameItems(props) {
                   alignItems="center"
                 >
                   <Grid item>
-                    <Link to={`/games/${game.id}`} style={{textDecoration: "none"}}>
-                      <Button>
+                    <Link 
+                      to={`/games/${game.id}`} 
+                      style={{textDecoration: "none"}}
+                    >
+                      <Button
+                        style={theme.phantom ? {color: 'white'}
+                        : {}
+                        }
+                      >
                         <InfoOutlinedIcon />
                         Details
                       </Button>
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button disabled={favorites.find(item => item.name === game.name) ? true : false} onClick={() => addFavoriteClick(game)}>
+                    <Button 
+                      disabled={favorites.find(item => item.name === game.name) ? true : false} 
+                      onClick={() => addFavoriteClick(game)}
+                      style={theme.phantom ? {color: 'white'}
+                      : {}
+                      }
+                    >
                       <FavoriteBorderOutlinedIcon />
                       {favorites.find(item => item.name === game.name) ? 'My Favorite' : 'Add as Favorite'}
                     </Button>

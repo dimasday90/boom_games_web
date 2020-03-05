@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import useRAWGFetcher from "../../hooks/useRAWGFetcher";
+import ThemeContext from '../../context/ThemeContext'
 
 import {
   Typography,
@@ -13,6 +14,9 @@ export default function Games() {
   const { loading, data: games } = useRAWGFetcher(
     "https://rawg-video-games-database.p.rapidapi.com/games"
   );
+
+  const theme = useContext(ThemeContext)
+
   return (
     <>
       <Typography component="div">
@@ -21,6 +25,9 @@ export default function Games() {
           m={1}
           fontWeight="fontWeightBold"
           fontSize="h2.fontSize"
+          style={theme.phantom ? {color: "white"} 
+          : {color: "black"}
+        }
         >
           Highlighted Game List
         </Box>

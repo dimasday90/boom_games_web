@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import favoriteReducer from './reducers/favoriteReducer'
 import gameDetailReducer from './reducers/gameDetailReducer'
@@ -10,8 +10,11 @@ const allReducer = combineReducers({
     loadingErrorReducer
 })
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default createStore (
     allReducer,
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers (
+        applyMiddleware(thunk)
+    )
 )

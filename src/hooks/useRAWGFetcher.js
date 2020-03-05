@@ -17,12 +17,8 @@ export default function useRAWGFetcher(url) {
         "x-rapidapi-key": "067232f597mshc20b09566a2a287p176e17jsnc52fbc1e0652"
       }
     })
-      .then(({ data }) => {
-        if (data.results) {
-          setData(data.results);
-        } else {
-          setData(data)
-        }
+      .then(({ data }) => {        
+        setData(data.results);
       })
       .catch(err => {
         setError(err);

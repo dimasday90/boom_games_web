@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     useSelector
 } from 'react-redux'
@@ -11,8 +11,11 @@ import {
 import NoFavoriteGameItems from "./components/NoFavoriteGameItems"
 import FavoriteGameList from "./components/FavoriteGameItems"
 
+import ThemeContext from '../../context/ThemeContext'
+
 export default function Games() {
   const favorites = useSelector(state => state.favoriteReducer.favorites)
+  const theme = useContext(ThemeContext)
   return (
     <>
       <Typography component="div">
@@ -21,6 +24,9 @@ export default function Games() {
           m={1}
           fontWeight="fontWeightBold"
           fontSize="h2.fontSize"
+          style={theme.phantom ? {color: "white"}
+          : {color: "black"}
+          }
         >
           Favorite Game List
         </Box>

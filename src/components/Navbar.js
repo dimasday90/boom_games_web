@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   fade, 
   makeStyles 
@@ -11,7 +11,9 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Tooltip
+  Tooltip,
+  FormControlLabel,
+  Switch
 } from '@material-ui/core'
 import {
   Search as SearchIcon,
@@ -23,6 +25,7 @@ import {
 import {
   Link
 } from 'react-router-dom'
+import ThemeContext from '../context/ThemeContext'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -90,7 +93,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  //   const [search, setSearch] = React.useState('')
+  const theme = useContext(ThemeContext)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -181,7 +184,12 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" 
+        style={
+        theme.phantom ? {backgroundColor: "red"} 
+        : {/* backgroundColor back to default, so let this be empty object */}
+        }
+      >
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             BoomGames React
@@ -200,6 +208,11 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <div className={classes.grow} />
+          <FormControlLabel 
+            control={<Switch onClick={theme.toggle} value={theme.phantom} color="default" />} 
+            label="Phantom Mode" 
+            labelPlacement="start" 
+          />
           <div className={classes.sectionDesktop}>
             <Tooltip title="Games">
               <Link

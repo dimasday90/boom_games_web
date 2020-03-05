@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Grid,
     Card,
@@ -8,8 +8,10 @@ import {
     Box,
     Chip
 } from '@material-ui/core'
+import ThemeContext from '../../../context/ThemeContext'
 
 export default function GameDescriptionImage (props) {
+    const theme = useContext(ThemeContext)
     return (
         <Grid
             container
@@ -23,7 +25,11 @@ export default function GameDescriptionImage (props) {
                 md={6}
                 lg={6}
             >
-                <Card>
+                <Card
+                    style={theme.phantom ? {backgroundColor: "grey", color: 'white'}
+                    : {}
+                    }
+                >
                     <CardMedia
                         image={props.game.background_image}
                         title={props.game.slug}
@@ -39,7 +45,9 @@ export default function GameDescriptionImage (props) {
                 lg={6}
             >
                 <Card
-                    style={{minHeight: 560}}
+                    style={theme.phantom ? {backgroundColor: "grey", color: 'white', minHeight: 560}
+                    : {minHeight: 560}
+                    }
                 >
                     <CardContent>
                         <Typography
@@ -67,7 +75,7 @@ export default function GameDescriptionImage (props) {
                                 {props.game.description_raw}
                             </Box>
                         </Typography>
-                        <Typography color="textSecondary">
+                        <Typography>
                             Developers:
                         </Typography>
                         <Grid item>
@@ -76,11 +84,11 @@ export default function GameDescriptionImage (props) {
                                 className="chip"
                                 key={developer.id}
                                 label={developer.name}
-                                color="primary"
+                                color={theme.phantom ? "secondary" : "primary"}
                             />
                             ))}
                         </Grid>
-                        <Typography color="textSecondary">
+                        <Typography>
                             Genres:
                         </Typography>
                         <Grid item>
@@ -89,11 +97,11 @@ export default function GameDescriptionImage (props) {
                                 className="chip"
                                 key={genre.id}
                                 label={genre.name}
-                                color="primary"
+                                color={theme.phantom ? "secondary" : "primary"}
                             />
                             ))}
                         </Grid>
-                        <Typography color="textSecondary">
+                        <Typography>
                             Platforms:
                         </Typography>
                         <Grid item>
@@ -102,11 +110,11 @@ export default function GameDescriptionImage (props) {
                                 className="chip"
                                 key={platform.id}
                                 label={platform.name}
-                                color="primary"
+                                color={theme.phantom ? "secondary" : "primary"}
                             />
                             ))}
                         </Grid>
-                        <Typography color="textSecondary">
+                        <Typography>
                             Stores:
                         </Typography>
                         <Grid item>
@@ -115,7 +123,7 @@ export default function GameDescriptionImage (props) {
                                 className="chip"
                                 key={id}
                                 label={store.name}
-                                color="primary"
+                                color={theme.phantom ? "secondary" : "primary"}
                             />
                             ))}
                         </Grid>

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import useRAWGFetcher from "../../hooks/useRAWGFetcher";
 import {
     useParams
 } from 'react-router-dom'
@@ -21,9 +20,6 @@ export default function GameDetail () {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.loadingErrorReducer.loading)
     const game = useSelector(state => state.gameDetailReducer.game)
-    // const {loading, data: game} = useRAWGFetcher(
-    //     `https://rawg-video-games-database.p.rapidapi.com/games/${id}`
-    // );
     
     useEffect(() => {
         dispatch(fetchGameData(id))

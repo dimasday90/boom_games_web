@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Grid,
     Card,
@@ -10,8 +10,10 @@ import {
 import {
     Rating
 } from '@material-ui/lab'
+import ThemeContext from '../../../context/ThemeContext'
 
 export default function GameRatingTags (props) {
+    const theme = useContext(ThemeContext)
     return (
         <Grid
             container
@@ -25,7 +27,11 @@ export default function GameRatingTags (props) {
                 md={6}
                 lg={6}
             >
-                <Card>
+                <Card
+                    style={theme.phantom ? {backgroundColor: "grey", color: 'white'}
+                    : {}
+                    }
+                >
                     <CardContent>
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <Typography component="legend">Rating</Typography>
@@ -39,7 +45,7 @@ export default function GameRatingTags (props) {
                                     className="chip"
                                     key={tag.id}
                                     label={tag.name}
-                                    color="primary"
+                                    color={theme.phantom ? "secondary" : "primary"}
                                 />
                                 ))}
                             </Grid>

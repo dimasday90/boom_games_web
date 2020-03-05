@@ -19,6 +19,7 @@
   transition: 0.4s;
 }
 
-.link-navbar:hover {
-  color: rgb(255, 8, 8);
+.phantom-theme-card {
+  color: red;
+  background-color: black
 }
