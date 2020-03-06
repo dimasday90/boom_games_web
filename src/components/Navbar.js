@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import {
-  fade, 
-  makeStyles 
-} from "@material-ui/core/styles";
+import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
   Toolbar,
@@ -14,18 +12,17 @@ import {
   Tooltip,
   FormControlLabel,
   Switch
-} from '@material-ui/core'
+} from "@material-ui/core";
 import {
   Search as SearchIcon,
   AccountCircle,
   MoreVert as MoreIcon,
   Games as GamesIcon,
   Favorite as FavoriteIcon
-} from '@material-ui/icons'
-import {
-  Link
-} from 'react-router-dom'
-import ThemeContext from '../context/ThemeContext'
+} from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import ThemeContext from "../context/ThemeContext";
+import searchAction from "../store/actionCreators/searchAction";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -91,12 +88,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const theme = useContext(ThemeContext)
+  const dispatch = useDispatch();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const theme = useContext(ThemeContext);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const changeSearchField = event => {
+    dispatch(searchAction(event.target.value));
+  };
 
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -184,10 +186,14 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" 
+      <AppBar
+        position="static"
         style={
-        theme.phantom ? {backgroundColor: "red"} 
-        : {/* backgroundColor back to default, so let this be empty object */}
+          theme.phantom
+            ? { backgroundColor: "red" }
+            : {
+                /* backgroundColor back to default, so let this be empty object */
+              }
         }
       >
         <Toolbar>
@@ -205,20 +211,24 @@ export default function PrimarySearchAppBar() {
                 input: classes.inputInput
               }}
               inputProps={{ "aria-label": "search" }}
+              onChange={changeSearchField}
             />
           </div>
           <div className={classes.grow} />
-          <FormControlLabel 
-            control={<Switch onClick={theme.toggle} value={theme.phantom} color="default" />} 
-            label="Phantom Mode" 
-            labelPlacement="start" 
+          <FormControlLabel
+            control={
+              <Switch
+                onClick={theme.toggle}
+                value={theme.phantom}
+                color="default"
+              />
+            }
+            label="Phantom Mode"
+            labelPlacement="start"
           />
           <div className={classes.sectionDesktop}>
             <Tooltip title="Games">
-              <Link
-                className="link-navbar"
-                to="/"
-              >
+              <Link className="link-navbar" to="/">
                 <IconButton
                   edge="end"
                   aria-label="games page"
@@ -231,10 +241,7 @@ export default function PrimarySearchAppBar() {
               </Link>
             </Tooltip>
             <Tooltip title="Favorites">
-              <Link
-                className="link-navbar"
-                to="/favorites"
-              >
+              <Link className="link-navbar" to="/favorites">
                 <IconButton
                   edge="end"
                   aria-label="games page"

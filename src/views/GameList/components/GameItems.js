@@ -8,29 +8,24 @@ import {
   Chip,
   Grid,
   Typography
-} from '@material-ui/core'
+} from "@material-ui/core";
 import {
   InfoOutlined as InfoOutlinedIcon,
   FavoriteBorderOutlined as FavoriteBorderOutlinedIcon
-} from '@material-ui/icons'
-import {
-  Link
-} from 'react-router-dom'
-import {
-  useSelector,
-  useDispatch
-} from 'react-redux'
+} from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { addFavorite } from '../../../store/actionCreators/favoriteActions'
-import ThemeContext from '../../../context/ThemeContext'
+import { addFavorite } from "../../../store/actionCreators/favoriteActions";
+import ThemeContext from "../../../context/ThemeContext";
 
 export default function GameItems(props) {
-  const dispatch = useDispatch()
-  const favorites = useSelector(state => state.favoriteReducer.favorites)
-  const theme = useContext(ThemeContext)
-  
-  function addFavoriteClick (payload) {
-    dispatch(addFavorite(payload))
+  const dispatch = useDispatch();
+  const favorites = useSelector(state => state.favoriteReducer.favorites);
+  const theme = useContext(ThemeContext);
+
+  function addFavoriteClick(payload) {
+    dispatch(addFavorite(payload));
   }
 
   return (
@@ -38,9 +33,10 @@ export default function GameItems(props) {
       <Grid container wrap="wrap" spacing={3}>
         {props.games.map(game => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={game.id}>
-            <Card className="card" 
-              style={theme.phantom ? {backgroundColor: "grey", color: 'white'}
-              : {}
+            <Card
+              className="card"
+              style={
+                theme.phantom ? { backgroundColor: "grey", color: "white" } : {}
               }
             >
               <CardContent>
@@ -75,30 +71,30 @@ export default function GameItems(props) {
                   alignItems="center"
                 >
                   <Grid item>
-                    <Link 
-                      to={`/games/${game.id}`} 
-                      style={{textDecoration: "none"}}
+                    <Link
+                      to={`/games/${game.id}`}
+                      style={{ textDecoration: "none" }}
                     >
-                      <Button
-                        style={theme.phantom ? {color: 'white'}
-                        : {}
-                        }
-                      >
+                      <Button style={theme.phantom ? { color: "white" } : {}}>
                         <InfoOutlinedIcon />
                         Details
                       </Button>
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Button 
-                      disabled={favorites.find(item => item.name === game.name) ? true : false} 
-                      onClick={() => addFavoriteClick(game)}
-                      style={theme.phantom ? {color: 'white'}
-                      : {}
+                    <Button
+                      disabled={
+                        favorites.find(item => item.name === game.name)
+                          ? true
+                          : false
                       }
+                      onClick={() => addFavoriteClick(game)}
+                      style={theme.phantom ? { color: "white" } : {}}
                     >
                       <FavoriteBorderOutlinedIcon />
-                      {favorites.find(item => item.name === game.name) ? 'My Favorite' : 'Add as Favorite'}
+                      {favorites.find(item => item.name === game.name)
+                        ? "My Favorite"
+                        : "Add as Favorite"}
                     </Button>
                   </Grid>
                 </Grid>

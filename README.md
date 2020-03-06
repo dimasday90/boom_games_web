@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pre Requiste
+
+start json-server by using command below:
+
+```
+npm run server-dev
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
